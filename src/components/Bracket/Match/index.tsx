@@ -19,25 +19,51 @@ type MatchProps = {
   teams: TeamType[]
 }
 
+const emptyTeam = {
+  id: '',
+  name: 'TBD',
+  logo: '',
+  score: 0,
+}
+
 const Match = ({ playing, teams, winner }: MatchProps) => {
   const { handleEditClick } = useBracket()
+
+  const setTeamsData = () => {
+    if (teams.length === 1) return [emptyTeam, ...teams]
+    return teams
+  }
+
   return (
     <>
       <StyledMatch tabIndex={0}>
         <EditContainer>
-          <EditButton aria-label="Edit tournament" onClick={handleEditClick}>
+          <EditButton
+            aria-label="Edit tournament"
+            onClick={() => handleEditClick(teams)}
+          >
             <EditIcon />
           </EditButton>
         </EditContainer>
         <Content>
           {playing && <Playing>Playing</Playing>}
-          {teams!.map(({ id, logo, name }) => (
-            <Team id={id} name={name} logo={logo} winner={winner === id} />
+          {setTeamsData()!.map(({ id, logo, name, score }) => (
+            <Team
+              id={id}
+              name={name}
+              logo={logo}
+              score={score}
+              winner={winner === id}
+            />
           ))}
         </Content>
       </StyledMatch>
     </>
   )
+}
+
+Match.defaultProps = {
+  teams: [emptyTeam, emptyTeam],
 }
 
 export default Match

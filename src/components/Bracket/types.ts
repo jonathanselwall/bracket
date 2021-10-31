@@ -1,3 +1,5 @@
+import { Team } from '../../types'
+
 export interface BracketProps {
-  handleEditClick: () => void
+  handleEditClick: (teams: Team[]) => void
 }

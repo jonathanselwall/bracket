@@ -98,7 +98,7 @@ export const Team = styled.div`
     width: 100%;
     max-width: 64px;
     margin-right: var(--spacing-medium);
-    padding: 8px;
+    padding: var(--spacing-small);
   }
 `
 

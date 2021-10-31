@@ -21,10 +21,7 @@ export const StyledBracket = styled.div`
   margin: auto;
   display: flex;
   flex-direction: column;
-  overflow-x: auto;
   padding: 0 var(--spacing-xl);
-
-  ${hideScrollBar}
 `
 
 export const Prev = styled.div`

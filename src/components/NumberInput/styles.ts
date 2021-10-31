@@ -41,4 +41,10 @@ export const InputControlButton = styled.button`
   line-height: 1;
   cursor: pointer;
   appearance: none;
+  opacity: 0.4;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+  }
 `

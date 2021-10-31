@@ -2,8 +2,8 @@ import { createContext, useContext, useState } from 'react'
 import { BracketProps } from './types'
 
 interface BracketContextProps extends BracketProps {
-  setHover: (id: string | null) => void
-  hover: string | null
+  setHover: (id: string | false) => void
+  hover: string | false
 }
 
 interface Props extends BracketProps {
@@ -13,7 +13,7 @@ interface Props extends BracketProps {
 const BracketContext = createContext<BracketContextProps | undefined>(undefined)
 
 const BracketProvider = ({ handleEditClick, children }: Props) => {
-  const [hover, setHover] = useState<string | null>(null)
+  const [hover, setHover] = useState<string | false>(false)
 
   const populatedValues = {
     handleEditClick,

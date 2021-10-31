@@ -25,30 +25,67 @@ const Bracket = ({ handleEditClick }: BracketProps) => {
           <h2>Finals</h2>
         </HeadingWrapper>
         <Grouping>
-          <Match teams={[hundredThieves, fnatic]} winner="1" />
+          <Match teams={[fnatic]} />
           <Prev>
             <Grouping>
-              <Match playing teams={[cloud9, hundredThieves]} winner="1" />
+              <Match
+                playing
+                teams={[
+                  { ...cloud9, score: 2 },
+                  { ...hundredThieves, score: 0 },
+                ]}
+                winner="1"
+              />
               <Prev>
                 <Grouping>
-                  <Match teams={[evilGeniuses, cloud9]} winner="2" />
+                  <Match
+                    teams={[
+                      { ...evilGeniuses, score: 3 },
+                      { ...cloud9, score: 5 },
+                    ]}
+                    winner="2"
+                  />
                 </Grouping>
                 <Lines />
                 <Grouping>
-                  <Match teams={[hundredThieves, immortals]} winner="1" />
+                  <Match
+                    teams={[
+                      { ...hundredThieves, score: 6 },
+                      { ...immortals, score: 2 },
+                    ]}
+                    winner="1"
+                  />
                 </Grouping>
               </Prev>
             </Grouping>
             <Lines />
             <Grouping>
-              <Match teams={[teamLiquid, fnatic]} winner="4" />
+              <Match
+                teams={[
+                  { ...teamLiquid, score: 4 },
+                  { ...fnatic, score: 6 },
+                ]}
+                winner="4"
+              />
               <Prev>
                 <Grouping>
-                  <Match teams={[rouge, teamLiquid]} winner="6" />
+                  <Match
+                    teams={[
+                      { ...rouge, score: 2 },
+                      { ...teamLiquid, score: 4 },
+                    ]}
+                    winner="6"
+                  />
                 </Grouping>
                 <Lines />
                 <Grouping>
-                  <Match teams={[tsm, fnatic]} winner="4" />
+                  <Match
+                    teams={[
+                      { ...tsm, score: 1 },
+                      { ...fnatic, score: 3 },
+                    ]}
+                    winner="4"
+                  />
                 </Grouping>
               </Prev>
             </Grouping>

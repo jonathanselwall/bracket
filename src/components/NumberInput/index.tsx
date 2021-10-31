@@ -20,6 +20,7 @@ const NumberInput = ({ value }: NumberInputProps) => {
         <InputControlButton>
           <ChevronUpIcon />
         </InputControlButton>
+
         <InputControlButton>
           <ChevronDownIcon />
         </InputControlButton>

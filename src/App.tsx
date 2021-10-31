@@ -1,4 +1,3 @@
-import { useCallback } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 
 import GlobalStyle from './components/_settings/globalStyles'
@@ -6,11 +5,18 @@ import theme from './components/_settings/theme'
 import Header from './components/Header'
 import Bracket from './components/Bracket'
 import Sidebar from './components/Sidebar'
+import { hideScrollBar } from './components/_settings/mixins'
 
+import { Team } from './types'
 import { AppProvider, useAppState } from './context'
 
 function App() {
-  const { sidebar, toggleSidebar } = useAppState()
+  const { sidebar, toggleSidebar, setSelected, selected } = useAppState()
+
+  const handleEditClick = (teams: Team[]) => {
+    setSelected(teams)
+    toggleSidebar()
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -18,9 +24,13 @@ function App() {
       <Layout>
         <Header />
         <Main>
-          <Bracket handleEditClick={toggleSidebar} />
+          <Bracket handleEditClick={handleEditClick} />
         </Main>
-        <Sidebar open={sidebar} closeSidebar={() => toggleSidebar(false)} />
+        <Sidebar
+          open={sidebar}
+          closeSidebar={() => toggleSidebar(false)}
+          selected={selected}
+        />
       </Layout>
     </ThemeProvider>
   )
@@ -50,6 +60,8 @@ const Main = styled.main`
     var(--color-bg-main) 30%,
     var(--color-bg-main) 100%
   );
+  overflow: auto;
+  ${hideScrollBar}
 
   &::after {
     content: '';

@@ -7,23 +7,33 @@ interface TeamProps extends TeamType {
   score?: number
 }
 
+const handleScore = (score: number | undefined) => {
+  if (score === 0) return 0
+  if (!score) return '--'
+  return score
+}
+
 const Team = ({ winner, ...team }: TeamProps) => {
   const { setHover, hover } = useBracket()
 
   return (
     <StyledTeam
       winner={winner}
-      onMouseOver={() => setHover(team.id)}
+      onMouseOver={() => setHover(team?.id)}
       onMouseLeave={() => setHover(null)}
-      isHovered={team.id === hover}
+      isHovered={team?.id === hover}
     >
       <Container>
         <Information>
-          <img className="team-logo" src={team.logo} alt="" />
-          <span className="team-name">{team.name}</span>
+          <img
+            className="team-logo"
+            src={team?.logo || 'https://via.placeholder.com/64'}
+            alt="Accessible Text"
+          />
+          <span className="team-name">{team?.name}</span>
         </Information>
 
-        <Points>{team.score || '--'}</Points>
+        <Points>{handleScore(team.score)}</Points>
       </Container>
     </StyledTeam>
   )

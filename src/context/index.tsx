@@ -1,10 +1,12 @@
 import { createContext, useContext, useState, useCallback } from 'react'
 import { AppContextProps } from './types'
+import { Team } from '../types'
 
 const AppContext = createContext<AppContextProps | undefined>(undefined)
 
 const AppProvider = ({ children }: { children: any }) => {
-  const [sidebar, setSidebar] = useState(true)
+  const [sidebar, setSidebar] = useState<boolean>(true)
+  const [selected, setSelected] = useState<Team[] | null>(null)
 
   const toggleSidebar = useCallback(
     (visible) => {
@@ -15,6 +17,8 @@ const AppProvider = ({ children }: { children: any }) => {
   )
 
   const value = {
+    selected,
+    setSelected,
     sidebar,
     toggleSidebar,
   }

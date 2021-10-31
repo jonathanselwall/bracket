@@ -9,10 +9,10 @@ export const TableHeader = styled.thead`
 
   th {
     display: flex;
-    margin-bottom: 8px;
+    margin-bottom: var(--spacing-small);
     text-align: center;
     justify-content: center;
-    padding-right: 36px;
+    padding-right: var(--spacing-large);
   }
 `
 export const TableBody = styled.tbody`
@@ -25,9 +25,9 @@ export const Row = styled.tr`
   border-spacing: 0;
   width: 100%;
   grid-template-columns: minmax(250px, 1fr) 150px 150px 150px;
-  grid-gap: 8px;
+  grid-gap: var(--spacing-small);
   background-color: var(--color-bg-number-input);
-  margin-bottom: 16px;
+  margin-bottom: var(--spacing-medium);
 `
 export const Column = styled.td`
   display: flex;
@@ -36,7 +36,7 @@ export const Column = styled.td`
 export const Table = styled.table`
   display: block;
   width: 100%;
-  padding: 32px;
+  padding: var(--spacing-large);
 
   color: var(--color-white);
 

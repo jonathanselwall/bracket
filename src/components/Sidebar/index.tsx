@@ -2,6 +2,7 @@ import { useEffect, useLayoutEffect, useCallback, useRef } from 'react'
 import { StyledSidebar, Overlay, CloseButton, Content, Team } from './styles'
 import { Table, TableHeader, TableBody, Row, Column } from '../Table'
 import NumberInput from '../NumberInput'
+import { Team as TeamType } from '../../types'
 
 import { teams } from '../../dummy'
 
@@ -10,13 +11,23 @@ import CloseIcon from '../../icons/close.svg'
 type SidebarProps = {
   open: boolean
   closeSidebar: () => void
+  selected: TeamType[] | null
 }
 
-const Sidebar = ({ open, closeSidebar }: SidebarProps) => {
+const Sidebar = ({ open, closeSidebar, selected }: SidebarProps) => {
   const closeButtonRef = useRef<null | HTMLButtonElement>(null)
 
   const handleEscClick = (event: KeyboardEvent) => {
     if (event.key === 'Escape') closeSidebar!()
+  }
+
+  const filterTeams = (teams: TeamType[]) => {
+    if (selected) {
+      return teams.filter((team) =>
+        selected.find((selectedTeam) => selectedTeam.id === team.id)
+      )
+    }
+    return teams
   }
 
   useEffect(() => {
@@ -50,7 +61,7 @@ const Sidebar = ({ open, closeSidebar }: SidebarProps) => {
               </Row>
             </TableHeader>
             <TableBody>
-              {teams.map((team) => (
+              {filterTeams(teams).map((team) => (
                 <Row>
                   <Column>
                     <Team>
