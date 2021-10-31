@@ -8,6 +8,9 @@
 ## Stuff todo
 - Data model structure
 - Tournament state handling
-- Write tests
 - Memo/callback stuff
 - More animation work
+- Proper responsive work
+- Drag around to move
+- Write tests
+- Tons of polish
